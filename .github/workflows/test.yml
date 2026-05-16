@@ -4,13 +4,17 @@ on:
     branches:
       - master
 jobs:
-  test:
-    strategy:
-      matrix:
-        app:
-          - bumptag
-          - grade
-    runs-on: macos-latest
+  # TODO: replace with real per-app jobs once new packages are added.
+  #  test:
+  #    strategy:
+  #      matrix:
+  #        app:
+  #          - <package-name>
+  #    runs-on: macos-latest
+  #    steps:
+  #      - name: Install app
+  #        run: brew install sv-tools/apps/${{ matrix.app }}
+  noop:
+    runs-on: ubuntu-latest
     steps:
-      - name: Install app
-        run: brew install sv-tools/apps/${{ matrix.app }}
+      - run: 'echo "no apps configured yet"'
