@@ -1,0 +1,30 @@
+name: Test Apps
+on:
+  push:
+    branches:
+      - main
+permissions: read-all
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    outputs:
+      formulas: ${{ steps.list.outputs.formulas }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        run: |
+          formulas=$(find Formula -maxdepth 1 -name '*.rb' -exec basename {} .rb \; | jq -R . | jq -s -c .)
+          echo "formulas=$formulas" >> "$GITHUB_OUTPUT"
+  test:
+    needs: scan
+    if: needs.scan.outputs.formulas != '[]'
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJSON(needs.scan.outputs.formulas) }}
+    steps:
+      - name: Install ${{ matrix.app }}
+        run: brew install sv-tools/apps/${{ matrix.app }}
+      - name: Test ${{ matrix.app }}
+        run: brew test sv-tools/apps/${{ matrix.app }}
