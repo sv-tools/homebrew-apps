@@ -2,7 +2,7 @@ name: Test Apps
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   # TODO: replace with real per-app jobs once new packages are added.
   #  test:
