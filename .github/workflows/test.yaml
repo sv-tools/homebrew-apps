@@ -18,12 +18,16 @@ jobs:
   test:
     needs: scan
     if: needs.scan.outputs.formulas != '[]'
-    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
         app: ${{ fromJSON(needs.scan.outputs.formulas) }}
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
+      - name: Add Homebrew to PATH (Linux)
+        if: runner.os == 'Linux'
+        run: echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
       - name: Install ${{ matrix.app }}
         run: brew install sv-tools/apps/${{ matrix.app }}
       - name: Test ${{ matrix.app }}
