@@ -10,7 +10,7 @@ jobs:
     outputs:
       formulas: ${{ steps.list.outputs.formulas }}
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - id: list
         run: |
           formulas=$(find Formula -maxdepth 1 -name '*.rb' -exec basename {} .rb \; | jq -R . | jq -s -c .)
