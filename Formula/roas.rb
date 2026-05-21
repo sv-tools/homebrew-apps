@@ -6,24 +6,24 @@
 class Roas < Formula
   desc "Command-line front-end for the roas OpenAPI library"
   homepage "https://github.com/sv-tools/roas"
-  version "0.6.0"
+  version "0.6.1"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     on_arm do
-      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.0/roas-0.6.0-aarch64-apple-darwin.tar.gz"
-      sha256 "f714926e354f804921d9a016e8b4feaca4fa85c95d5eb81b9fbeb209491cc84c"
+      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.1/roas-0.6.1-aarch64-apple-darwin.tar.gz"
+      sha256 "47dc685517126c9b9c21318c29ed895b8da59161227b876a87b8cebca5a473dd"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.0/roas-0.6.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "3d9075d8c50d961be35e10dae4150af63e937e01e06f7c0fc41be5be50c5c26b"
+      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.1/roas-0.6.1-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "60db78463185665540a175cf550a700e11bf25a5cbfe9bc87f5e4d6b65461302"
     end
     on_intel do
-      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.0/roas-0.6.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "56c3016ef4e809f8c88b9a58a4d6e46663d4c6af3de04f5ac4b5b9078bb2c6ed"
+      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.1/roas-0.6.1-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "5da3eb2588bae6f991c872b7a48c54d8a283f4d60148f53e771a7f4148e63bbd"
     end
   end
 
@@ -38,6 +38,6 @@ class Roas < Formula
   end
 
   test do
-    assert_match "roas 0.6.0", shell_output("#{bin}/roas --version")
+    assert_match "roas 0.6.1", shell_output("#{bin}/roas --version")
   end
 end
