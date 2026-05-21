@@ -6,32 +6,38 @@
 class Roas < Formula
   desc "Command-line front-end for the roas OpenAPI library"
   homepage "https://github.com/sv-tools/roas"
-  version "0.5.0"
+  version "0.6.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     on_arm do
-      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.5.0/roas-0.5.0-aarch64-apple-darwin.tar.gz"
-      sha256 "742ab2f1c51bc86474918a7b1b0a1ad8d83c7438403ac8aa41015f27eeff5c75"
+      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.0/roas-0.6.0-aarch64-apple-darwin.tar.gz"
+      sha256 "f714926e354f804921d9a016e8b4feaca4fa85c95d5eb81b9fbeb209491cc84c"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.5.0/roas-0.5.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "727eb96989b5851737642b9823a79071e38c80bbe061807f2505d623d23062f1"
+      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.0/roas-0.6.0-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "3d9075d8c50d961be35e10dae4150af63e937e01e06f7c0fc41be5be50c5c26b"
     end
     on_intel do
-      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.5.0/roas-0.5.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "0a516eb0053144cf1177996ad0ffc3980a8c822cc1b5eb7180d9e8423f0e4cfc"
+      url "https://github.com/sv-tools/roas/releases/download/roas-cli/v0.6.0/roas-0.6.0-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "56c3016ef4e809f8c88b9a58a4d6e46663d4c6af3de04f5ac4b5b9078bb2c6ed"
     end
   end
 
   def install
     bin.install "roas"
+    # Generate shell completions + manpages from the binary we
+    # just installed — no extra tarball download required.
+    generate_completions_from_executable(bin/"roas", "completions")
+    man_dir = buildpath/"man"
+    system bin/"roas", "manpages", "--out", man_dir
+    man1.install Dir[man_dir/"*.1"]
   end
 
   test do
-    assert_match "roas 0.5.0", shell_output("#{bin}/roas --version")
+    assert_match "roas 0.6.0", shell_output("#{bin}/roas --version")
   end
 end
