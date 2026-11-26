@@ -6,28 +6,28 @@
 class CargoNuspec < Formula
   desc "Cargo subcommand that builds a crate and packages it as NuGet packages"
   homepage "https://github.com/sv-tools/nuspec-rs"
-  version "0.3.1"
+  version "0.4.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     on_arm do
-      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.3.1/cargo-nuspec-0.3.1-aarch64-apple-darwin.tar.gz"
-      sha256 "d50bbf820863750491019b29abcb616df20b9a0993545b50c2d3360c22a6f9d7"
+      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.4.0/cargo-nuspec-0.4.0-aarch64-apple-darwin.tar.gz"
+      sha256 "98bc815075f2222014db1325ba284254505046ac1287e44d8b93dc50ed4ce327"
     end
     on_intel do
-      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.3.1/cargo-nuspec-0.3.1-x86_64-apple-darwin.tar.gz"
-      sha256 "3e476be6533d5a2c669ed0709ba89e7b882217ec0eea01bff941542076b938ce"
+      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.4.0/cargo-nuspec-0.4.0-x86_64-apple-darwin.tar.gz"
+      sha256 "233f2873a87c81e357bdc3619e915593841ad14ce0d6709b1fa3d939433a20f9"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.3.1/cargo-nuspec-0.3.1-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "cec8cdd9a5255c921968798774ae6e2e22abd4a5dac13a5b5e638063dd6f2b19"
+      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.4.0/cargo-nuspec-0.4.0-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "b56ce078ea4316eb74f635420630570adf4c4171ac8c33030546706547553773"
     end
     on_intel do
-      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.3.1/cargo-nuspec-0.3.1-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "986d2baccdf62907dc7f3c9eb03fcd3b5f7d4e0b1f231aa90448de0b2355245d"
+      url "https://github.com/sv-tools/nuspec-rs/releases/download/cargo-nuspec/v0.4.0/cargo-nuspec-0.4.0-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "cea26d3551148ef33f25b7581e810a84a5e7e55a226ba751ada72fa4563a7020"
     end
   end
 
